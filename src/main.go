@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 
+	"zhaoqing.com/web-dev-backend/src/admin"
 	_ "zhaoqing.com/web-dev-backend/src/db"
 	_ "zhaoqing.com/web-dev-backend/src/scripts"
 	"zhaoqing.com/web-dev-backend/src/users"
@@ -26,7 +27,18 @@ func cors(f http.HandlerFunc) http.HandlerFunc {
 }
 
 func main() {
-	//设置访问的路由
+	/* 设置访问的路由 */
+	// Admin
+	/* 查询所有用户信息 */
+	http.HandleFunc("/admin/search/userinfo", cors(admin.SearchUserInfo))
+	/* 查询所有“劳您驾” */
+	http.HandleFunc("/admin/search/helpme", cors(admin.SearchHelpMe))
+	/* 查询所有“我可以” */
+	http.HandleFunc("/admin/search/helpyou", cors(admin.SearchHelpYou))
+	/* 查询中介收入 */
+	http.HandleFunc("/admin/search/income", cors(admin.SearchIncome))
+
+	// Users
 	/* 登录 - 注册 */
 	http.HandleFunc("/users/register", cors(users.Register))
 	http.HandleFunc("/users/login", cors(users.Login))
