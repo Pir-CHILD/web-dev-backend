@@ -128,9 +128,9 @@
 `INT`
 ### 中介收益汇总表
 **INTERMEDIARYINCOME** - Table
-- 月份（YYYY-MM）
+- 月份（YYYY-MM）$*$
 *month*
-`DATETIME`
+`CHAR(7)`
 - 地域（省-市）
 *provinceCity*
 `VARCHAR`
